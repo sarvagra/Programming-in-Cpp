@@ -52,8 +52,6 @@ void insert_node() {}
 
 void delete_node() {}
 
-int print_element() { return 0; }
-
 int print() { return 0; }
 
 int main() {
@@ -73,6 +71,7 @@ int main() {
     n1->next = n2;
     n2->next = n3;
     n3->next = nullptr;
+
 
     // finally store the head pointer
     node *head = n1;
