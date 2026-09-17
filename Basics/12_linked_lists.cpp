@@ -60,7 +60,7 @@ node *insert_node_via_value(node *head, int n) {
   node *insert = nullptr;
   if (head == nullptr) { // handle empty list
     delete n1;           // delete floating node since list is empty
-    cerr << "Empty list passed... \n returning list head\n ";
+    cout << "Empty list passed... \n returning list head\n ";
     return head;
   }
   if (head->data == n) { // handle first element insertion
@@ -78,7 +78,7 @@ node *insert_node_via_value(node *head, int n) {
     current = current->next;
   }
   delete n1;
-  cerr << "Insertion failed since element was not found in the list...\n "
+  cout << "Insertion failed since element was not found in the list...\n "
           "returning head \n";
   return head;
 }
@@ -109,7 +109,7 @@ node *insert_node_via_index(node *head, int n) {
   node *current = head;
   node *insert = nullptr;
   if (head == nullptr) {
-    cerr << "Empty list is passed...\n returning head\n";
+    cout << "Empty list is passed...\n returning head\n";
     delete n1;
     return head;
   } else if (n == 0) { // handle the insertion at head
@@ -128,7 +128,7 @@ node *insert_node_via_index(node *head, int n) {
     }
     current = current->next;
   }
-  cerr << "Index out of range\n returning head\n";
+  cout << "Index out of range\n returning head\n";
   delete n1;
   return head;
 }
@@ -137,7 +137,7 @@ node *insert_node_via_index(node *head, int n) {
 node *delete_node_via_index(node *head, int n) {
   node *current = head;
   if (current == nullptr || n < 0) { // check if the list is empty
-    cerr << "Empty List is Being Passed or index is negative... \n Returning "
+    cout << "Empty List is Being Passed or index is negative... \n Returning "
             "nullptr \n";
     return head;
   } else if (n == 0) {
@@ -154,7 +154,7 @@ node *delete_node_via_index(node *head, int n) {
                            // deleted
       if (i == n - 1) {
         if (del == nullptr) { // check if the index is out of bounds
-          cerr << "Index out of bounds... \n Returning unchanged list \n";
+          cout << "Index out of bounds... \n Returning unchanged list \n";
           return head;
         }
         current->next = del->next; // point the current node to the next node
@@ -173,7 +173,7 @@ node *delete_node_via_value(node *head, int n) {
   node *current = head;
   node *del = nullptr;
   if (head == nullptr) { // check if null list is passed - edge case handling
-    cerr << "Null list passed...\n returning unchanged list";
+    cout << "Null list passed...\n returning unchanged list";
     return head;
   }
 
@@ -184,18 +184,18 @@ node *delete_node_via_value(node *head, int n) {
       del = head;
       head = del->next;
       delete del;
-      cerr << "Deleted Element " << n << "\n";
+      cout << "Deleted Element " << n << "\n";
       return head;
     }
     if (del != nullptr && del->data == n) {
       current->next = del->next;
       delete del;
-      cerr << "Deleted Element " << n << "\n";
+      cout << "Deleted Element " << n << "\n";
       return head;
     }
     current = current->next;
   }
-  cerr << "Element not found... \n returning unchanged list\n";
+  cout << "Element not found... \n returning unchanged list\n";
   return head;
 }
 
@@ -203,7 +203,7 @@ node *delete_node_via_value(node *head, int n) {
 int print(node *head) {
   node *current = head;
   while (current != nullptr) {
-    cerr << current->data << " "; // print the data in that node
+    cout << current->data << " "; // print the data in that node
     current = current->next;      // take the address of the next node
   }
   return 0;
@@ -238,7 +238,7 @@ int main() {
     node *current = head; // copy the ptr to another one so we dont loose/modify
                           // the original one
     while (current != nullptr) {
-      cerr << current->data << " "; // print the data in that node
+      cout << current->data << " "; // print the data in that node
       current = current->next;      // take the address of the next node
     }
       */
@@ -255,19 +255,16 @@ int main() {
   cout << "nullptr\n";
 
   head = insert_node_via_value(head, 99);
-  head = insert_node_via_index(head, 99);
-
-  head = delete_node_via_index(head, 2);
-
+  cout << "List after insertion : ";
+  print(head);
+  head = insert_node_via_index(head, 3);
+  cout << "List after insertion : ";
+  print(head);
+  head = delete_node_via_index(head, 3);
+  cout << "List after deletion : ";
+  print(head);
   head = delete_node_via_value(head, 99);
-
-  cout << "Final list: ";
-  current = head;
-  while (current != nullptr) {
-    cout << current->data << " -> ";
-    current = current->next;
-  }
-  cout << "nullptr\n";
-
+  cout << "List after insertion : ";
+  print(head);
   return 0;
 }

@@ -20,7 +20,7 @@ Programming-in-Cpp/
 ### 1. 📚 `Basics/` — Zero to Hero in C++
 
 * **`00 - 03`** ➔ `Hello World`, Sum, Standard I/O (`cin`, `cout`, `cerr`, `clog`)
-* **`04 - 07`** ➔ Execution model, number systems, integer types & variable modifiers
+* **`04 - 07`** ➔ Execution model, number systems, integer types & variable modifiersf
 * **`08 - 10`** ➔ User inputs, Dynamic arrays (`std::vector`), and Static arrays
 * **`11 - 12`** ➔ Hash maps (`std::unordered_map`) & Linked Lists with custom node creation
 
