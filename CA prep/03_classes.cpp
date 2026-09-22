@@ -29,7 +29,7 @@
 
 using namespace std;
 
-class Library {
+class Book {
 private:
   int book_id;
   string title, author;
@@ -47,15 +47,11 @@ public:
     cout << "Enter the price. \n";
     cin >> price;
   }
-
-  void display(Library b, int limit, int p) {
-    cout << "All the books with price more than " << p << "\n";
-    for (int i = 0; i < limit; i++) {
-      if (b.price > p) {
-        cout << "Book ID: " << b.book_id << "\nBook title: " << b.title
-             << "\nAuthor name: " << b.author << "Price. \n"
-             << b.price << "\n";
-      }
+  bool is_more(int a) { return price > a ? true : false; }
+  void display(int limit) {
+    if (is_more(limit)) {
+      cout << "Book ID: " << book_id << "\nBook Title: " << title
+           << "\nAuthor Name: " << author << "\nPrice: " << price << "\n";
     }
   }
 };
@@ -67,9 +63,15 @@ int main() {
   cout << "Enter the minimum price for books.\n";
   cin >> p;
 
-  Library *books = new Library[n];
+  Book *books = new Book[n];
   for (int i = 0; i < n; i++) {
     books[i].input();
   }
-  books.display(n, p);
+  cout << "Books with price above " << p << "\n";
+
+  for (int i = 0; i < n; i++) {
+    books[i].display(p);
+  }
+  delete[] books; // clear memory
+  return 0;
 }
