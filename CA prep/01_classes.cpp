@@ -1,5 +1,5 @@
 
-// Q1 — Student Performance System
+// Student Performance System
 
 // Difficulty: Easy → Medium
 

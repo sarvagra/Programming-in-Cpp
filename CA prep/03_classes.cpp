@@ -1,4 +1,4 @@
-// Q3 — Library Book Record
+// Library Book Record
 
 // Difficulty: Medium
 

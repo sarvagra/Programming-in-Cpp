@@ -1,4 +1,4 @@
-// Q2 — Employee Salary Calculator
+// Employee Salary Calculator
 
 // Difficulty: Medium
 

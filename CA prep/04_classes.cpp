@@ -1,4 +1,4 @@
-// Q4 — Static Data + Static Member Function
+// Static Data + Static Member Function
 
 // Difficulty: Hard
 
