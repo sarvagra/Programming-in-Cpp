@@ -8,7 +8,6 @@
 // we repeatedly move to the next
 
 #include <iostream>
-#include <string>
 
 using namespace std;
 
