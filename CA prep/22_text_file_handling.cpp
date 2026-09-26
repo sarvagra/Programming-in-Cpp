@@ -73,13 +73,17 @@ int main() {
   fstream file4("../res/data.txt");
   file4.seekp(2);                  // set the writing position as 2
   file4 << "Appending at index 2"; // index=2 meaning third byte/character.
-  file4.flush(); // make sure its in the file not just in the buffer
+
+  file4.flush(); // forces buffered output to be sent to the underlying file,
+                 // used only when we wantthe guarantee of ot that.
 
   file4.seekg(0);    // read first line from beginning
   getline(file4, s); // get the first line
   cout << s << endl; // print
 
-  // usage of tellg and tellp
+  // usage of tellg and tellp, their values will always be same as they share
+  // same cursor shares same kernel seekg= get/read, seekp= put/write
+
   cout << "Writing position is : " << file4.tellp() << endl;
   cout << "Reading position is : " << file4.tellg() << endl;
 
