@@ -12,31 +12,32 @@ struct Student {
 int main() {
 
   // create objects of struct
-  Student s1, s2, s3;
+  Student s[3];
 
   // give values to each object
-  strcpy(s1.name, "Sarvagra");
-  s1.cgpa = 7.9;
-  strcpy(s2.name, "Vishvam");
-  s2.cgpa = 2.9;
-  strcpy(s3.name, "Srajan");
-  s3.cgpa = 2.9;
+  strcpy(s[0].name, "Sarvagra");
+  s[0].cgpa = 7.9;
+  strcpy(s[1].name, "Vishvam");
+  s[1].cgpa = 2.9;
+  strcpy(s[2].name, "Srajan");
+  s[2].cgpa = 2.9;
 
   // open a file
   fstream file("../res/multiple_binary.dat",
                ios::binary | ios::in | ios::out |
-                   ios::app); // app to create persistant record system
+                   ios::trunc); // app to create persistant record system
   file.seekp(0);
 
-  file.write(reinterpret_cast<char *>(&s1), sizeof(s1));
-  file.write(reinterpret_cast<char *>(&s2), sizeof(s2));
-  file.write(reinterpret_cast<char *>(&s3), sizeof(s3));
-
+  for (int i = 0; i < 3; i++) {
+    file.write(reinterpret_cast<char *>(&s[i]), sizeof(s[i]));
+  }
   file.seekg(0);
-  Student s;
-  while (file.read(reinterpret_cast<char *>(&s), sizeof(s))) {
-    cout << "Name: " << s.name << endl;
-    cout << "CGPA: " << s.cgpa << endl;
+  Student s1;
+
+  while (file.read(reinterpret_cast<char *>(&s1), sizeof(s1))) {
+
+    cout << "Name: " << s1.name << endl;
+    cout << "CGPA: " << s1.cgpa << endl;
     cout << "----------------\n";
   }
   file.close();
