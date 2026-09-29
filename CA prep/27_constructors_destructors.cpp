@@ -36,8 +36,8 @@ public:
   }
   void display() {
     cout << "----CAR INFO----" << endl;
-    cout << "model: " << model << endl;
     cout << "brand: " << brand << endl;
+    cout << "model: " << model << endl;
     cout << "priced at: " << price << endl;
   }
   // a destructor is called itself when an object is destroyed
@@ -62,4 +62,6 @@ int main() {
   Cars car1;
   car1.display();
   return 0;
+  // notice how The object's lifetime ends, and its destructor is automatically
+  // called. first created object's destructor is called last (LIFO)
 }
